@@ -68,13 +68,15 @@ def compile_proto(proto):
 
 
 class SQLiteProtobufTestCase(unittest.TestCase):
-  def setUp(self):
+  def setUp(self):    
+    if hasattr(self, '__PROTOBUF__'):
+      self.proto = compile_proto(self.__PROTOBUF__)
+
     self.db = sqlite3.connect(':memory:')
     self.db.enable_load_extension(True)
     self.db.load_extension(get_sqlite_protobuf_library())
     
     if hasattr(self, '__PROTOBUF__'):
-      self.proto = compile_proto(self.__PROTOBUF__)
       self.protobuf_load(self.proto.protobuf_library)
   
   def tearDown(self):
