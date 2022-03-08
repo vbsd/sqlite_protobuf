@@ -3,7 +3,7 @@ set -ue
 
 printf "\n\nBUILDING libsqlite_protobuf\n\n"
 
-rm -r builddir
+rm -rf builddir
 meson builddir
 pushd builddir
 meson compile
