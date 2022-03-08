@@ -5,7 +5,7 @@ description = ""
 authors = ["Vykintas Baltrušaitis <vykintas@baltr.lt>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 protobuf = "^3.19.4"
 
 [tool.poetry.dev-dependencies]

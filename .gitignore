@@ -4,3 +4,4 @@
 *.swo
 *.o
 **/__pycache__
+builddir
