@@ -12,9 +12,7 @@ import unittest
 
 
 def get_sqlite_protobuf_library():
-  return next(glob.iglob(os.path.join(
-    glob.escape(os.environ['CMAKE_CURRENT_BINARY_DIR']),
-    '..', 'src', 'libsqlite_protobuf.*')))
+  return os.environ['SQLITE_PROTOBUF_EXTENSION_PATH']
 
 
 def get_compiler():
