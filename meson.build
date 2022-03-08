@@ -1,3 +1,5 @@
+project('sqlite_protobuf', 'cpp')
+
 sqlite_protobuf_src_dir = 'src'
 sqlite_protobuf_include_dir = include_directories('include')
 
@@ -16,10 +18,12 @@ foreach s : sqlite_protobuf_src_files
 	_sqlite_protobuf_src_files += join_paths(sqlite_protobuf_src_dir, s)
 endforeach
 
+libprotobuf_dep = dependency('protobuf')
+
 sqlite_protobuf_lib = static_library('sqlite_protobuf',
 	_sqlite_protobuf_src_files,
 	include_directories: sqlite_protobuf_include_dir,
-	dependencies: [libprotobuf_dep, libdl_dep],
+	dependencies: [libprotobuf_dep],
 	cpp_args: ['-Wno-undef'])
 
 libsqlite_protobuf_dep = declare_dependency(link_whole: sqlite_protobuf_lib,
@@ -28,6 +32,6 @@ libsqlite_protobuf_dep = declare_dependency(link_whole: sqlite_protobuf_lib,
 sqlite_protobuf_so = shared_library('sqlite_protobuf',
 	_sqlite_protobuf_src_files,
 	include_directories: sqlite_protobuf_include_dir,
-	dependencies: [libprotobuf_dep, libdl_dep],
+	dependencies: [libprotobuf_dep],
 	cpp_args: ['-Wno-undef'],
 	install: true)
