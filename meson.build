@@ -18,7 +18,7 @@ foreach s : sqlite_protobuf_src_files
 	_sqlite_protobuf_src_files += join_paths(sqlite_protobuf_src_dir, s)
 endforeach
 
-libprotobuf_dep = dependency('protobuf')
+libprotobuf_dep = dependency('protobuf', version : '3.19.4')
 
 sqlite_protobuf_lib = static_library('sqlite_protobuf',
 	_sqlite_protobuf_src_files,
