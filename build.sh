@@ -12,10 +12,9 @@ popd
 printf "\n\nRUNNING libsqlite_protobuf TEST\n\n"
 
 pushd pytests/unit
-poetry install
 export SQLITE_PROTOBUF_EXTENSION_PATH=../../builddir/libsqlite_protobuf.so
-for test in $(poetry run python ../list_tests.py .)
+for test in $(python3 ../list_tests.py .)
 do
-    poetry run python -X faulthandler -m unittest -v $test
+    python3 -X faulthandler -m unittest -v $test
 done
 popd
